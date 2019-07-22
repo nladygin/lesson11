@@ -8,7 +8,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class IndexPage {
 
     private final String root = "https://otus.ru/?next=/lk/biography/personal/";
-//    private final String root = "https://otus.ru/";
     private final By locatorLogon = By.cssSelector("*[data-modal-id='new-log-reg'");
 
     private WebDriver driver;
