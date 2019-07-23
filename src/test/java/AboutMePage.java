@@ -66,81 +66,95 @@ public class AboutMePage {
 
 
 
-    public void putFName(String fName) {
+    public AboutMePage putFName(String fName) {
         driver.findElement(locatorFName).clear();
         driver.findElement(locatorFName).sendKeys(fName);
+        return this;
     }
 
-    public void putFNameLatin(String fNameLatin) {
+    public AboutMePage putFNameLatin(String fNameLatin) {
         driver.findElement(locatorFNameLatin).clear();
         driver.findElement(locatorFNameLatin).sendKeys(fNameLatin);
+        return this;
     }
 
-    public void putLName(String lName) {
+    public AboutMePage putLName(String lName) {
         driver.findElement(locatorLName).clear();
         driver.findElement(locatorLName).sendKeys(lName);
+        return this;
     }
 
-    public void putLNameLatin(String lNameLatin) {
+    public AboutMePage putLNameLatin(String lNameLatin) {
         driver.findElement(locatorLNameLatin).clear();
         driver.findElement(locatorLNameLatin).sendKeys(lNameLatin);
+        return this;
     }
 
-    public void putBlogName(String blogName) {
+    public AboutMePage putBlogName(String blogName) {
         driver.findElement(locatorBlogName).clear();
         driver.findElement(locatorBlogName).sendKeys(blogName);
+        return this;
     }
 
-    public void putBDay(String bDay) {
+    public AboutMePage putBDay(String bDay) {
         driver.findElement(locatorBDay).clear();
         driver.findElement(locatorBDay).sendKeys(bDay);
+        return this;
     }
 
-    public void selectCountry(String country) {
+    public AboutMePage selectCountry(String country) {
         HelperJS.click(driver, locatorCountryDropdownHide);
             wait.until(ExpectedConditions.presenceOfElementLocated(locatorCountryDropdownVisible));
         HelperJS.click(driver, By.cssSelector(String.format(locatorCountry,country)));
+        return this;
     }
 
-    public void selectCity(String city) {
+    public AboutMePage selectCity(String city) {
             wait.until(ExpectedConditions.attributeToBe(locatorCityReady, "disabled", ""));
         HelperJS.click(driver, locatorCityDropdownHide);
             wait.until(ExpectedConditions.presenceOfElementLocated(locatorCityDropdownVisible));
         HelperJS.click(driver, By.cssSelector(String.format(locatorCity, city)));
+        return this;
     }
 
-    public void setSchedule(String schedule) {
+    public AboutMePage setSchedule(String schedule) {
         if (! driver.findElement(By.cssSelector(String.format(locatorWorkSchedule,schedule))).isSelected()) {
             HelperJS.click(driver, By.cssSelector(String.format(locatorWorkSchedule, schedule)));
         }
+        return this;
     }
 
-    public void setContact0(String value) {
+    public AboutMePage setContact0(String value) {
         HelperJS.click(driver, locatorContact0DropdownHide);
             wait.until(ExpectedConditions.presenceOfElementLocated(locatorContact0DropdownVisible));
         HelperJS.click(driver, locatorContact0Method);
         HelperJS.setValue(driver, locatorContact0Value, value);
+        return this;
     }
 
-    public void setContact1(String value) {
+    public AboutMePage setContact1(String value) {
         HelperJS.click(driver, locatorContactAdd);
         HelperJS.click(driver, locatorContact1DropdownHide);
             wait.until(ExpectedConditions.presenceOfElementLocated(locatorContact1DropdownVisible));
         HelperJS.click(driver, locatorContact1Method);
         HelperJS.setValue(driver, locatorContact1Value, value);
+        return this;
     }
 
-    public void setGender(String gender) {
+    public AboutMePage setGender(String gender) {
         Select dropdown = new Select(driver.findElement(locatorGender));
         dropdown.selectByVisibleText(gender);
+        return this;
     }
 
-    public void setCompany(String value) {
+    public AboutMePage setCompany(String value) {
         HelperJS.setValue(driver, locatorCompany, value);
+        return this;
     }
 
-    public void setWork(String value) {
+    public AboutMePage setWork(String value) {
         HelperJS.setValue(driver, locatorWork, value);
+        return this;
     }
 
     public void save() {
@@ -149,60 +163,74 @@ public class AboutMePage {
     }
 
 
-    public void checkFName(String fName) {
+    public AboutMePage checkFName(String fName) {
         assertThat(driver.findElement(locatorFName).getAttribute("value"), equalTo(fName));
+        return this;
     }
 
-    public void checkFNameLatin(String fNameLatin) {
+    public AboutMePage checkFNameLatin(String fNameLatin) {
         assertThat(driver.findElement(locatorFNameLatin).getAttribute("value"), equalTo(fNameLatin));
+        return this;
     }
 
-    public void checkLName(String lName) {
+    public AboutMePage checkLName(String lName) {
         assertThat(driver.findElement(locatorLName).getAttribute("value"), equalTo(lName));
+        return this;
     }
 
-    public void checkLNameLatin(String lNameLatin) {
+    public AboutMePage checkLNameLatin(String lNameLatin) {
         assertThat(driver.findElement(locatorLNameLatin).getAttribute("value"), equalTo(lNameLatin));
+        return this;
     }
 
-    public void checkBlogName(String blogName) {
+    public AboutMePage checkBlogName(String blogName) {
         assertThat(driver.findElement(locatorBlogName).getAttribute("value"), equalTo(blogName));
+        return this;
     }
 
-    public void checkBDay(String bDay) {
+    public AboutMePage checkBDay(String bDay) {
         assertThat(driver.findElement(locatorBDay).getAttribute("value"), equalTo(bDay));
+        return this;
     }
 
-    public void checkCountry(String country) {
+    public AboutMePage checkCountry(String country) {
         assertThat(driver.findElement(locatorCountryCheck).getAttribute("title"), equalTo(country));
+        return this;
     }
 
-    public void checkCity(String city) {
+    public AboutMePage checkCity(String city) {
         assertThat(driver.findElement(locatorCityCheck).getAttribute("title"), equalTo(city));
+        return this;
     }
 
-    public void checkSchedule(String schedule) {
+    public AboutMePage checkSchedule(String schedule) {
         assertTrue(driver.findElement(By.cssSelector(String.format(locatorWorkSchedule,schedule))).isSelected());
+        return this;
     }
 
-    public void checkContact0(String contact) {
+    public AboutMePage checkContact0(String contact) {
         assertThat(driver.findElement(locatorContact0Value).getAttribute("value"), equalTo(contact));
+        return this;
     }
 
-    public void checkContact1(String contact) {
+    public AboutMePage checkContact1(String contact) {
         assertThat(driver.findElement(locatorContact1Value).getAttribute("value"), equalTo(contact));
+        return this;
     }
 
-    public void checkGender(String gender) {
+    public AboutMePage checkGender(String gender) {
         assertTrue(driver.findElement(By.xpath(String.format(locatorGenderValue,gender))).isSelected());
+        return this;
     }
 
-    public void checkCompany(String company) {
+    public AboutMePage checkCompany(String company) {
         assertThat(driver.findElement(locatorCompany).getAttribute("value"), equalTo(company));
+        return this;
     }
 
-    public void checkWork(String work) {
+    public AboutMePage checkWork(String work) {
         assertThat(driver.findElement(locatorWork).getAttribute("value"), equalTo(work));
+        return this;
     }
 
 

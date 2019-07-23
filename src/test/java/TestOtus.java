@@ -28,21 +28,22 @@ public class TestOtus extends Base {
     public void fill(){
         logger.info("start fill");
             AboutMePage aboutMePage = gotoAboutMePage();
-                aboutMePage.putFName(fName);
-                aboutMePage.putFNameLatin(fNameLatin);
-                aboutMePage.putLName(lName);
-                aboutMePage.putLNameLatin(lNameLatin);
-                aboutMePage.putBlogName(blogName);
-                aboutMePage.putBDay(bDay);
-                aboutMePage.selectCountry(country);
-                aboutMePage.selectCity(city);
-                aboutMePage.setSchedule(schedule);
-                aboutMePage.setContact0(contactValue);
-                aboutMePage.setContact1(contactValue);
-                aboutMePage.setGender(gender);
-                aboutMePage.setCompany(companyName);
-                aboutMePage.setWork(work);
-                aboutMePage.save();
+                aboutMePage
+                        .putFName(fName)
+                        .putFNameLatin(fNameLatin)
+                        .putLName(lName)
+                        .putLNameLatin(lNameLatin)
+                        .putBlogName(blogName)
+                        .putBDay(bDay)
+                        .selectCountry(country)
+                        .selectCity(city)
+                        .setSchedule(schedule)
+                        .setContact0(contactValue)
+                        .setContact1(contactValue)
+                        .setGender(gender)
+                        .setCompany(companyName)
+                        .setWork(work)
+                        .save();
         logger.info("finish fill");
     }
 
@@ -52,20 +53,21 @@ public class TestOtus extends Base {
     public void check() {
         logger.info("start check");
             AboutMePage aboutMePage = gotoAboutMePage();
-                aboutMePage.checkFName(fName);
-                aboutMePage.checkFNameLatin(fNameLatin);
-                aboutMePage.checkLName(lName);
-                aboutMePage.checkLNameLatin(lNameLatin);
-                aboutMePage.checkBlogName(blogName);
-                aboutMePage.checkBDay(bDay);
-                aboutMePage.checkCountry(country);
-                aboutMePage.checkCity(city);
-                aboutMePage.checkSchedule(schedule);
-                aboutMePage.checkContact0(contactValue);
-                aboutMePage.checkContact1(contactValue);
-                aboutMePage.checkGender(gender);
-                aboutMePage.checkCompany(companyName);
-                aboutMePage.checkWork(work);
+                aboutMePage
+                        .checkFName(fName)
+                        .checkFNameLatin(fNameLatin)
+                        .checkLName(lName)
+                        .checkLNameLatin(lNameLatin)
+                        .checkBlogName(blogName)
+                        .checkBDay(bDay)
+                        .checkCountry(country)
+                        .checkCity(city)
+                        .checkSchedule(schedule)
+                        .checkContact0(contactValue)
+                        .checkContact1(contactValue)
+                        .checkGender(gender)
+                        .checkCompany(companyName)
+                        .checkWork(work);
         logger.info("finish check");
     }
 
