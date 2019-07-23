@@ -110,7 +110,9 @@ public class AboutMePage {
     }
 
     public void setSchedule(String schedule) {
-        HelperJS.click(driver, By.cssSelector(String.format(locatorWorkSchedule, schedule)));
+        if (! driver.findElement(By.cssSelector(String.format(locatorWorkSchedule,schedule))).isSelected()) {
+            HelperJS.click(driver, By.cssSelector(String.format(locatorWorkSchedule, schedule)));
+        }
     }
 
     public void setContact0(String value) {
@@ -180,7 +182,7 @@ public class AboutMePage {
     }
 
     public void checkSchedule(String schedule) {
-        assertThat(driver.findElement(By.cssSelector(String.format(locatorWorkSchedule,schedule))).getAttribute("checked"), equalTo("true"));
+        assertTrue(driver.findElement(By.cssSelector(String.format(locatorWorkSchedule,schedule))).isSelected());
     }
 
     public void checkContact0(String contact) {
@@ -192,7 +194,7 @@ public class AboutMePage {
     }
 
     public void checkGender(String gender) {
-        assertThat(driver.findElement(By.xpath(String.format(locatorGenderValue,gender))).getAttribute("checked"), equalTo("true"));
+        assertTrue(driver.findElement(By.xpath(String.format(locatorGenderValue,gender))).isSelected());
     }
 
     public void checkCompany(String company) {
