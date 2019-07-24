@@ -1,3 +1,6 @@
+package page;
+
+import helper.PageElementHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -16,6 +19,7 @@ public class LogonPage {
     private Logger logger = LogManager.getLogger(getClass().getSimpleName());
     private WebDriver driver;
     private WebDriverWait wait;
+    private PageElementHelper helper;
 
 
 
@@ -23,6 +27,7 @@ public class LogonPage {
     public LogonPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 10L);
+        this.helper = new PageElementHelper();
         wait.until(ExpectedConditions.visibilityOfElementLocated(locatorPageReady));
         logger.info("loaded");
     }
@@ -32,8 +37,10 @@ public class LogonPage {
     public AboutMePage logon(String login, String password) {
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[name='password']")));
-            HelperJS.setValue(driver, locatorEmail, login);
-            HelperJS.setValue(driver, locatorPassword, password);
+
+                helper
+                        .setValue(driver, locatorEmail, login)
+                        .setValue(driver, locatorPassword, password);
 
         driver.findElement(locatorForm).submit();
 
