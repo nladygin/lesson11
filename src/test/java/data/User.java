@@ -13,7 +13,9 @@ public class User {
     private String bDay;
     private String country;
     private String city;
-    private String schedule;
+    private String scheduleFull;
+    private String scheduleFlexible;
+    private String scheduleRemote;
     private String contactValue0;
     private String contactValue1;
     private String gender;
@@ -54,8 +56,16 @@ public class User {
         return city;
     }
 
-    public String getSchedule() {
-        return schedule;
+    public String getScheduleFull() {
+        return scheduleFull;
+    }
+
+    public String getScheduleFlexible() {
+        return scheduleFlexible;
+    }
+
+    public String getScheduleRemote() {
+        return scheduleRemote;
     }
 
     public String getContactValue0() {
@@ -122,8 +132,18 @@ public class User {
         return this;
     }
 
-    public User setSchedule(String schedule) {
-        this.schedule = schedule;
+    public User setScheduleFull(String schedule) {
+        this.scheduleFull = schedule;
+        return this;
+    }
+
+    public User setScheduleFlexible(String schedule) {
+        this.scheduleFlexible = schedule;
+        return this;
+    }
+
+    public User setScheduleRemote(String schedule) {
+        this.scheduleRemote = schedule;
         return this;
     }
 
@@ -166,7 +186,9 @@ public class User {
                         .concat(bDay).concat(",")
                         .concat(country).concat(",")
                         .concat(city).concat(",")
-                        .concat(schedule).concat(",")
+                        .concat(scheduleFull).concat(",")
+                        .concat(scheduleFlexible).concat(",")
+                        .concat(scheduleRemote).concat(",")
                         .concat(contactValue0).concat(",")
                         .concat(contactValue1).concat(",")
                         .concat(gender).concat(",")
@@ -189,7 +211,9 @@ public class User {
                 Objects.equals(bDay, user.bDay) &&
                 Objects.equals(country, user.country) &&
                 Objects.equals(city, user.city) &&
-                Objects.equals(schedule, user.schedule) &&
+                Objects.equals(scheduleFull, user.scheduleFull) &&
+                Objects.equals(scheduleFlexible, user.scheduleFlexible) &&
+                Objects.equals(scheduleRemote, user.scheduleRemote) &&
                 Objects.equals(contactValue0, user.contactValue0) &&
                 Objects.equals(contactValue1, user.contactValue1) &&
                 Objects.equals(gender, user.gender) &&
@@ -200,6 +224,6 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(fName, fNameLatin, lName, lNameLatin, blogName, bDay, country, city, schedule, contactValue0, contactValue1, gender, companyName, work);
+        return Objects.hash(fName, fNameLatin, lName, lNameLatin, blogName, bDay, country, city, scheduleFull, scheduleFlexible, scheduleRemote, contactValue0, contactValue1, gender, companyName, work);
     }
 }

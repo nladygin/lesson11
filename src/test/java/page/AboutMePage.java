@@ -1,7 +1,6 @@
 package page;
 
 import data.User;
-import helper.DataLoader;
 import helper.PageElementHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -35,7 +34,9 @@ public class AboutMePage {
     private final By locatorCityDropdownVisible      = By.cssSelector("div.js-lk-cv-dependent-slave-city div[class='lk-cv-block__select-options js-custom-select-options-container']");
     private   String locatorCity                     = "div.lk-cv-block__select-scroll_city button[title='%s']";
     private       By locatorCityCheck                = By.cssSelector("div.js-lk-cv-dependent-slave-city button.lk-cv-block__select-option_selected");
-    private   String locatorWorkSchedule             = "input[name='work_schedule'][title='%s']";
+    private final By locatorWorkScheduleFull         = By.cssSelector("input[name='work_schedule'][value='full']");
+    private final By locatorWorkScheduleFlexible     = By.cssSelector("input[name='work_schedule'][value='flexible']");
+    private final By locatorWorkScheduleRemote       = By.cssSelector("input[name='work_schedule'][value='remote']");
     private final By locatorContact0DropdownHide     = By.cssSelector("div[data-num='0'] div.hide");
     private final By locatorContact0DropdownVisible  = By.cssSelector("div[data-num='0'] div[class='lk-cv-block__select-options lk-cv-block__select-options_left js-custom-select-options-container']");
     private final By locatorContact0Method           = By.cssSelector("div[data-num='0'] button[data-value='telegram']");
@@ -94,10 +95,9 @@ public class AboutMePage {
             helper.click(driver, By.cssSelector(String.format(locatorCity, user.getCity())));
 
             /* schedule */
-            boolean checked = driver.findElement(By.cssSelector(String.format(locatorWorkSchedule, user.getSchedule()))).isSelected();
-            if (! checked) {
-                helper.click(driver, By.cssSelector(String.format(locatorWorkSchedule, user.getSchedule())));
-            }
+            helper.setCheckboxState(driver, locatorWorkScheduleFull, user.getScheduleFull());
+            helper.setCheckboxState(driver, locatorWorkScheduleFlexible, user.getScheduleFlexible());
+            helper.setCheckboxState(driver, locatorWorkScheduleRemote, user.getScheduleRemote());
 
             /* contacts */
             /* contact 0 */
@@ -189,7 +189,24 @@ public class AboutMePage {
                                     "title"
                             )
                     )
-                    .setSchedule(getSchedule())
+                    .setScheduleFull(
+                            helper.getCheckCheckboxState(
+                                    driver,
+                                    locatorWorkScheduleFull
+                            )
+                    )
+                    .setScheduleFlexible(
+                            helper.getCheckCheckboxState(
+                                    driver,
+                                    locatorWorkScheduleFlexible
+                            )
+                    )
+                    .setScheduleRemote(
+                            helper.getCheckCheckboxState(
+                                    driver,
+                                    locatorWorkScheduleRemote
+                            )
+                    )
                     .setContactValue0(
                             helper.getValueByAttribute(
                                     driver,
@@ -224,18 +241,6 @@ public class AboutMePage {
         return user;
     }
 
-
-
-
-    private String getSchedule(){
-        String schedule = new DataLoader().load(User.class).getSchedule();
-        boolean checked = driver.findElement(By.cssSelector(String.format(locatorWorkSchedule,schedule))).isSelected();
-        if (checked) {
-            return schedule;
-        } else {
-            return "";
-        }
-    }
 
 
 }
