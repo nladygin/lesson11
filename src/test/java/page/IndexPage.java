@@ -27,6 +27,8 @@ public class IndexPage {
     }
 
 
+
+
     public LogonPage gotoPrivateArea() {
         wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(locatorLogon))).click();
         return new LogonPage(driver);

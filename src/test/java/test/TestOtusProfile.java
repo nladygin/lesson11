@@ -19,41 +19,29 @@ public class TestOtusProfile extends Base {
 
 
     @Test
-    public void fill(){
-        logger.info("start fill");
+    public void test(){
 
-        AboutMePage aboutMePage = gotoAboutMePage();
+        IndexPage indexPage = new IndexPage(driver);
+        LogonPage logonPage = indexPage.gotoPrivateArea();
+        AboutMePage aboutMePage = logonPage.logon(login, password);
+
+        logger.info("start fill");
 
         aboutMePage
                 .setUserData(user)
                 .save();
 
         logger.info("finish fill");
-    }
 
+        aboutMePage.load();
 
-
-    @Test
-    public void check() {
         logger.info("start check");
-
-        AboutMePage aboutMePage = gotoAboutMePage();
 
         User savedUserData = aboutMePage.getUserData();
 
         assertEquals(savedUserData, user);
 
         logger.info("finish check");
-    }
-
-
-
-
-
-    private AboutMePage gotoAboutMePage() {
-        IndexPage indexPage = new IndexPage(driver);
-        LogonPage logonPage = indexPage.gotoPrivateArea();
-        return logonPage.logon(login, password);
     }
 
 

@@ -56,6 +56,7 @@ public class AboutMePage {
     @Rule
     ErrorCollector collector = new ErrorCollector();
 
+    private final String root = "https://otus.ru/lk/biography/personal/";
     private Logger logger = LogManager.getLogger(getClass().getSimpleName());
     private WebDriver driver;
     private WebDriverWait wait;
@@ -69,6 +70,13 @@ public class AboutMePage {
         logger.info("loaded");
     }
 
+
+    public AboutMePage load(){
+        driver.get(root);
+        wait.until(ExpectedConditions.presenceOfElementLocated(locatorPageReady));
+        logger.info("loaded");
+        return this;
+    }
 
 
     public AboutMePage setUserData(User user){

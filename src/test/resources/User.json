@@ -9,7 +9,7 @@
   "city":"Екатеринбург",
   "scheduleFull":"checked",
   "scheduleFlexible":"",
-  "scheduleRemote":"",
+  "scheduleRemote":"checked",
   "contactValue0":"+79221600984",
   "contactValue1":"+79221600984",
   "gender":"m",
